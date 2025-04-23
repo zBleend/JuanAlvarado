@@ -1,0 +1,133 @@
+/* Estilo general de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo del área de chat */
+.chat-box {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Estilo de los mensajes */
+.message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    opacity: 0;
+    animation: slideIn 0.6s forwards;
+}
+
+/* Animación de los mensajes */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mensajes del usuario */
+.user-message {
+    background-color: #d1e7fd;
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+/* Mensajes del amigo ficticio */
+.friend-message {
+    background-color: #e2f9e7;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+/* Estilo del campo de texto y botón */
+.message-input {
+    width: calc(100% - 120px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.message-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.send-button {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.send-button:active {
+    transform: translateY(2px);
+}
+
+/* Animación de aparición de la caja de chat */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para el contenedor de mensajes */
+.container {
+    animation: fadeIn 1s ease-out;
+}
+
