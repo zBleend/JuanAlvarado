@@ -4,7 +4,7 @@ user=None
 clave=None
 while True:
     print("Bienvenido al sistema")
-    resp=input("1.- Iniciar seccion\n2.- Registrarse\n3.- Salir\n")
+    resp=input("1.- Iniciar sesion\n2.- Registrarse\n3.- Salir\n")
     while resp not in ["1", "2", "3"]:
         resp=input("Ingrese una opcion valida\n")
     if resp=="2":
@@ -21,11 +21,15 @@ while True:
             os.system('cls')
             user1=input("Ingrese su nombre: \n")
             clave1=input("Ingrese su clave: \n")
-            while user1 is not user or clave1 is not clave:
-                print("Error, nombre o clave erroneo\n")
-            if user1==user and clave1==clave:
-                print(f"Bienvenido {user} al sistema")
-                break
+            while True:
+                if user1==user and clave1==clave:
+                    print(f"Bienvenido {user} al sistema")
+                    salir=True
+                    break
+                else:
+                    print("Error, nombre o clave erroneo\n")
+        if salir:
+            break
     elif resp=="3":
         print("Adios...")
         break
