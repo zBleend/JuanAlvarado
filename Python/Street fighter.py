@@ -1,9 +1,9 @@
 import random
 import time
-import os
+from os import system
 
 def limpiar_pantalla():
-    os.system('cls')
+    system('cls')
 
 def inicio_jugadores():
     print("""
@@ -36,6 +36,7 @@ def sistema(jugador1, jugador2, hp1, hp2):
                 atk*=2
             hp2-=atk
             print(f"Vida de {jugador2}")
+            print(f"{hp2}")
             print("/"*hp2)
             turno+=1
         else:
@@ -47,23 +48,27 @@ def sistema(jugador1, jugador2, hp1, hp2):
                 atk*=2
             hp1-=atk
             print(f"Vida de {jugador1}")
+            print(f"{hp1}")
             print("/"*hp1)
             turno+=1
         time.sleep(1)
         limpiar_pantalla()
     print("¡TENEMOS UN GANADOR!")
     time.sleep(1)
+    return hp1, hp2
 
 def ganador(jugador1, jugador2, hp1, hp2):
     limpiar_pantalla()
     print("El ganador es...")
     time.sleep(1)
-    if hp2 <= 0 and hp1 <= 0:
+    if hp2 <=0 and hp1 <=0:
         print(f"¡ES UN EMPATE!")
-    elif hp1 <=0:
+    elif hp2 <=0:
         print(f"El ganador es {jugador1}")
-    else:
+    elif hp1 <=0:
         print(f"El ganador es {jugador2}")
+    else:
+        print("Error...")
 
 if __name__ == "__main__":
     jugador1, jugador2 = inicio_jugadores()

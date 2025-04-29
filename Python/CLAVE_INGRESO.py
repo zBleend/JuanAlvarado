@@ -11,7 +11,6 @@ def banner2():
     print("----------------Adios----------------")
     print("*************************************")
 
-
 def limpiar_pantalla():
     if platform.system()=="Windows":
         os.system('cls')
