@@ -50,7 +50,7 @@ def sistema(op, usuario_registrado, saldos_usuarios, billetes):
         if user:
             while True:
                 op2 = menu_cajero(user)
-                if sistema_cajero(op2, user, saldos_usuarios, billetes) == "salir":
+                if sistema_cajero(op2, user, usuario_registrado, saldos_usuarios, billetes) == "salir":
                     break
     elif op==2:
         registro(usuario_registrado, saldos_usuarios)
@@ -151,6 +151,9 @@ Preciones Enter para continuar...
                 print("\nTrasferencia cancelada")
                 time.sleep(1)
                 return
+            else:
+                print("Error seleccione una opcion valida")
+                continue
         except ValueError:
             print("Ingrese un monto valido")
 
@@ -164,7 +167,7 @@ Billetes disponibles: $5.000 | $10.000 | $15.000 | $20.000 |
     while True:
         try:
             monto=int(input("\nIngresa el monto a retirar:            (Minimo $5.000)\n$"))
-            if monto <= 5000:
+            if monto < 5000:
                 print("Error: El minimo a retirar es $5.000")
                 continue
             if monto > saldo_usuarios[user]:
