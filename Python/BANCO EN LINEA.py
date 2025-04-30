@@ -220,6 +220,7 @@ def registro(usuario_registrado, saldos_usuarios):
     saldos_usuarios[user] = saldo_inicial
 
     print("El registro fue exitoso")
+    time.sleep(1.5)
     return user
     
 def validar_clave(clave):
