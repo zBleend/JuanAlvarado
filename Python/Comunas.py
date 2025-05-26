@@ -75,11 +75,20 @@ def menu_personas():
         limpiar_pantalla()
         return menu_personas
 
+# Mi def calculadora mal hecho
+
+# def calculadora(descuentoComuna, descuentoPersona):
+#     arancel = 200000
+#     descuentoTotal = (descuentoComuna + descuentoPersona) / 100
+#     arancelDescuento = arancel * descuentoTotal
+#     return descuentoTotal, arancelDescuento, arancel
+
 def calculadora(descuentoComuna, descuentoPersona):
     arancel = 200000
-    descuentoTotal = (descuentoComuna + descuentoPersona) / 100
-    arancelDescuento = arancel * descuentoTotal
-    return descuentoTotal, arancelDescuento, arancel
+    arancelDescuento = arancel * (1 - descuentoComuna/100)
+    arancelDescuento = arancelDescuento * (1 - descuentoPersona/100)
+    descuentoTotal = 1 - (arancelDescuento / arancel)
+    return descuentoTotal, arancel - arancelDescuento, arancel
 
 def sistema_final(arancel, descuentoTotal, personas, com, descuentoComuna, descuentoPersona, arancelDescuento):
     arancelFinal = arancel - arancelDescuento
@@ -97,4 +106,4 @@ if __name__ == "__main__":
     com, descuentoComuna = menu_comuna()
     personas, descuentoPersona = menu_personas()
     descuentoTotal, arancelDescuento, arancel = calculadora(descuentoComuna, descuentoPersona)
-    sistema_final(com, descuentoComuna, personas, descuentoPersona, descuentoTotal, arancelDescuento, arancel)
+    sistema_final(arancel, descuentoTotal, personas, com, descuentoComuna, descuentoPersona, arancelDescuento)

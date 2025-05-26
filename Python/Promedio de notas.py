@@ -1,5 +1,5 @@
 # Hacer un promedio de notas dependiendo de la cantidad de estudiantes
-alumnos=int(input("Ingrese la cantidad de alumnos:\n"))
+alumnos = int(input("Ingrese la cantidad de alumnos:\n"))
 for j in range(alumnos):
     cant=int(input(f"Ingrese la cantidad de notas del alumno {j+1}:\n"))
     suma=0
