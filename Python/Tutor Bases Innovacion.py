@@ -82,7 +82,7 @@ def main():
             tutor_paso_a_paso()
         elif opcion == "2":
             limpiar()
-            print("No disponible por ahora\npero visite este link para mas informacion sobre los temas disponibles")
+            print("No disponible por ahora.\nPero aqui te abro el navegador para mas informacion\nsobre los temas disponibles")
             webbrowser.open("https://chatgpt.com/share/6834ee32-b654-8002-a395-eccef803c0a3")
             time.sleep(1)
         elif opcion == "3":
