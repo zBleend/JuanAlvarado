@@ -35,9 +35,9 @@ def menu():
 def validacion(mensaje, mensaje_error, rango):
     try:
         while True:
-            var=input(mensaje)
+            var = input(mensaje)
             if var.isdigit() and int(var) in rango:
-                var=int(var)
+                var = int(var)
                 return (var)
             else:
                 print(mensaje_error)
@@ -45,29 +45,31 @@ def validacion(mensaje, mensaje_error, rango):
         print(mensaje_error)
 
 def sistema(op, usuario_registrado, saldos_usuarios, billetes):
-    if op==1:
+    if op == 1:
+        limpiar_pantalla()
         user = inicio_sesion(usuario_registrado)
         if user:
             while True:
                 op2 = menu_cajero(user)
                 if sistema_cajero(op2, user, usuario_registrado, saldos_usuarios, billetes) == "salir":
                     break
-    elif op==2:
+    elif op == 2:
+        limpiar_pantalla()
         registro(usuario_registrado, saldos_usuarios)
-    elif op==3:
+    elif op == 3:
         limpiar_pantalla()
         banner2()
         exit()
 
 def inicio_sesion(usuario_registrado):
     print("------Inicio de sesión------")
-    user=input("Ingrese su nombre de usuario:\n")
+    user = input("Ingrese su nombre de usuario:\n")
 
     if user not in usuario_registrado:
         print("Error: Nombre de usuario no registrado\n")
         time.sleep(1)
         return None
-    clave=input("Ingrese contraseña:\n")
+    clave = input("Ingrese contraseña:\n")
     if usuario_registrado[user] == clave:
         limpiar_pantalla()
         print("Cargando...")
@@ -91,17 +93,17 @@ def menu_cajero(user):
     return validacion("Seleccione una opcion: ", "Seleccione una opcion valida [1,4]", range(1,5))
 
 def sistema_cajero(op2, user, usuario_registrado, saldos_usuarios, billetes):
-    if op2==1:
+    if op2 == 1:
         print(f"Su saldo actual es de: ${saldos_usuarios[user]}")
         input("\nPresione Enter para continuar...")
         return "continuar"
-    elif op2==2:
+    elif op2 == 2:
         transferir(user, saldos_usuarios, usuario_registrado)
         return "continuar"
-    elif op2==3:
+    elif op2 == 3:
         retiro(user, saldos_usuarios, billetes)
         return "continuar"
-    elif op2==4:
+    elif op2 == 4:
         print("Cerrando sesion...")
         time.sleep(1.5)
         limpiar_pantalla()
@@ -128,17 +130,17 @@ Ingrese el nombre del destinatario:
     while True:
         try:
             monto=int(input("\nIngresa el monto a trasferir:            (Minimo $500)\n$"))
-            if monto< 500:
+            if monto <= 500:
                 print("El monto tiene que ser como minimo arriba de $500")
                 continue
-            if monto>saldos_usuarios[user]:
+            if monto > saldos_usuarios[user]:
                 print("Fondos insuficientes")
                 continue
             print(f"\n¿Desea transferir ${monto} a {destinatario}?")
             conf=input("""
 1.- Si
 2.- No""")
-            if conf=="1":
+            if conf == "1":
                 saldos_usuarios[user] -= monto
                 saldos_usuarios[destinatario] += monto
                 input(f"""
@@ -147,7 +149,7 @@ Nuevo saldo: ${saldos_usuarios[user]}
 Preciones Enter para continuar...
 """)
                 return
-            elif conf=="2":
+            elif conf == "2":
                 print("\nTrasferencia cancelada")
                 time.sleep(1)
                 return
@@ -166,7 +168,7 @@ Billetes disponibles: $5.000 | $10.000 | $15.000 | $20.000 |
 """)
     while True:
         try:
-            monto=int(input("\nIngresa el monto a retirar:            (Minimo $5.000)\n$"))
+            monto = int(input("\nIngresa el monto a retirar:            (Minimo $5.000)\n$"))
             if monto < 5000:
                 print("Error: El minimo a retirar es $5.000")
                 continue
@@ -256,7 +258,6 @@ def registos():
 if __name__=="__main__":
     usuario_registrado, saldos_usuarios, billetes = registos()
     while True:
-
         op=menu()
         sistema(op, usuario_registrado, saldos_usuarios, billetes)
         if op != 3:
