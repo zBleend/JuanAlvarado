@@ -10,7 +10,7 @@ def inicio_jugadores():
 ***************************
 Bienvenido a Street Fighter
 ***************************
-          """)
+""")
     time.sleep(1)
     jugador1=input("Ingresa a tu jugador 1\n")
     jugador2=input("Ingresa a tu jugador 2\n")
@@ -61,17 +61,17 @@ def ganador(jugador1, jugador2, hp1, hp2):
     limpiar_pantalla()
     print("El ganador es...")
     time.sleep(1)
-    if hp2 <=0 and hp1 <=0:
-        print(f"¡ES UN EMPATE!")
-    elif hp2 <=0:
-        print(f"El ganador es {jugador1}")
-    elif hp1 <=0:
+    if hp1 <= 0 and hp2 <= 0:
+        print("¡ES UN EMPATE!")
+    elif hp1 <= 0:
         print(f"El ganador es {jugador2}")
+    elif hp2 <= 0:
+        print(f"El ganador es {jugador1}")
     else:
         print("Error...")
 
 if __name__ == "__main__":
     jugador1, jugador2 = inicio_jugadores()
     jugador1, jugador2, hp1, hp2 = turnos(jugador1, jugador2)
-    sistema(jugador1, jugador2, hp1, hp2)
+    hp1, hp2 = sistema(jugador1, jugador2, hp1, hp2)
     ganador(jugador1, jugador2, hp1, hp2)

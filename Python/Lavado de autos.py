@@ -51,7 +51,6 @@ def ventas(totalventas):
         time.sleep(1)
         limpiar_pantalla()
 
- 
 def menu():
     totalventas = 0
     while True:
