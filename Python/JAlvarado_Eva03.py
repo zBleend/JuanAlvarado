@@ -75,6 +75,8 @@ Bienvenido al sistema de venta de entradas del Cine Estrella
                 entrada(entradas)
             elif op == 2:
                 limpiar_pantalla()
+
+                # Tenia que agregar "entradas =" para actualizar la variable entradas
                 entradas = comprar(entradas)
             elif op == 3:
                 limpiar_pantalla()
