@@ -1,7 +1,8 @@
 def menu():
     productos = []
     precios = []
-
+    carrito = []
+    
     while True:
         try:
             op = int(input("""--- Bienvenido ---
