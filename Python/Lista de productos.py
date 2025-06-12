@@ -1,5 +1,5 @@
 def menu():
-    productos = []
+    productos = ["Pan", "Jamon", "Queso", ""]
     precios = []
     carrito = []
     

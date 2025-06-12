@@ -23,8 +23,6 @@ def menu():
                 print("Seleccione una opcion valida") 
         except Exception:
             print("Error, Seleccione una opciona valida")
-        
-
 
 def opciones():
     notas = []
@@ -36,9 +34,9 @@ def opciones():
             case 2:
                 notas = borrar_nota(notas)
             case 3:
-                notas = mostrar_notas(notas)
+                mostrar_notas(notas)
             case 4:
-                notas = sacar_promedio(notas)
+                sacar_promedio(notas)
             case 5:
                 if notas:
                     notas.clear()
