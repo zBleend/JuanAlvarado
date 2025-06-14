@@ -13,7 +13,7 @@ def menu():
 """))
             match op:
                 case 1:
-                    productos, precios = agregar_productos()
+                    productos, precios = agregar_producto(productos, precios)
                 case 2:
                     ver_productos(productos, precios)
                 case 3:
@@ -40,6 +40,12 @@ def agregar_producto(productos, precios):
 
 def ver_productos(productos, precios):
     print("\n--- Lista de productos ---")
+    for i in range(len(productos)):
+        print(f"{productos[i]} - ${precios[i]:.2f}")
+    print("--------------------------")
+
+def generar_boleta(productos, precios):
+    print("\n--- Boleta ---")
     for i in range(len(productos)):
         print(f"{productos[i]} - ${precios[i]:.2f}")
     print("--------------------------")

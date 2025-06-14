@@ -15,13 +15,13 @@ def menu():
 | 4. Sacar Promedio         |
 | 5. Limpiar Todas las notas|
 | 6. Salir                  |
-=============================
-"""))
+============================="""))
+
             if 1 <= op <= 6:
                 return op
             else:
                 print("Seleccione una opcion valida") 
-        except Exception:
+        except ValueError:
             print("Error, Seleccione una opciona valida")
 
 def opciones():
@@ -46,7 +46,7 @@ def opciones():
                 time.sleep(1.5)
             case 6:
                 print("Saliendo del programa")
-                time.sleep(1)
+                time.sleep(0.5)
                 break
 
 def ingresar_nota(notas):
