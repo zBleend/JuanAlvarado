@@ -34,7 +34,7 @@ def registro():
                 nuevo_id = max(prod.keys(), default=0) + 1
                 prod[nuevo_id] = {
                 "Nombre" : nombre,
-                "Contraseña" : precio,
+                "Precio" : precio,
                 "Code" : code
             }
                 print("Registro exitoso")
@@ -51,7 +51,7 @@ def validar_nombre(nombre):
         return True
 
 def validar_precio(precio):
-    if precio < 8000 and precio > 100000:
+    if precio < 8000 or precio > 100000:
         print("Error, el precio no es correcto [Entre 8.000 y 100.000]")
     else:
         return True
@@ -68,6 +68,35 @@ def validar_code(code):
     else:
         return True
 
+def actualizar_juego():
+    try:
+        id_juego = int(input("Ingrese la ID del juego que quiere actualizar:\n"))
+        if id_juego not in prod:
+            print("ID no encontrada.")
+            return
+        juego = prod[id_juego]
+        print(f"Datos actuales: Nombre: {juego['Nombre']}, Precio: {juego['Precio']}, Code: {juego['Code']}")
+        campo = input("¿Qué desea actualizar? (nombre/precio/code): ").lower()
+        if campo == "nombre":
+            nuevo_nombre = input("Ingrese el nuevo nombre:\n")
+            if validar_nombre(nuevo_nombre) == True:
+                juego["Nombre"] = nuevo_nombre
+                print("Nombre actualizado.")
+        elif campo == "precio":
+            nuevo_precio = int(input("Ingrese el nuevo precio:\n"))
+            if validar_precio(nuevo_precio) == True:
+                juego["Precio"] = nuevo_precio
+                print("Precio actualizado.")
+        elif campo == "code":
+            nuevo_code = input("Ingrese el nuevo código:\n")
+            if validar_code(nuevo_code) == True:
+                juego["Code"] = nuevo_code
+                print("Código actualizado.")
+        else:
+            print("Campo no válido.")
+    except Exception as e:
+        print("Error al actualizar:", e)
+
 def sistema():
     while True:
         op = menu()
@@ -76,14 +105,18 @@ def sistema():
                 registro()
             case 2:
                 for k, v in prod.items():
-                    print(f"ID {k}, Nombre {v["Nombre"]}, Precio {v["Precio"]}, Code {v["Code"]}")
-                input()
+                    print(f'ID {k}, Nombre {v["Nombre"]}, Precio {v["Precio"]}, Code {v["Code"]}')
+                input("Presione enter para continuar")
                 return sistema()
             case 3:
-                print()
+                actualizar_juego()
             case 4:
-                borrar = int(input("Ingrese la ID del juego que quiere borrar:\n"))
-                del prod[borrar]
+                try:
+                    borrar = int(input("Ingrese la ID del juego que quiere borrar:\n"))
+                    del prod[borrar]
+                    return sistema()
+                except Exception:
+                    print("Elije una ID valida")
             case 5:
                 print("Adios")
                 break
