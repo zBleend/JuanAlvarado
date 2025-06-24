@@ -113,3 +113,28 @@
 #     for c, v in alumno.items():
 #         print(c, ":", v)
 
+
+
+d1 = {
+  "Nombre": "Sara",
+  "Edad": 27,
+  "Documento": 1003882
+}
+
+print(d1)
+
+nombre = input("Ingresa un nombre")
+
+d1['Nombre'] = nombre
+
+
+direccion = input("Ingresa un nombre")
+
+d1["Direccion"] = direccion
+
+#{'Nombre': Laura', 'Edad': 27, 'Documento': 1003882}
+
+#{'Nombre': 'Sara', 'Edad': 27, 'Documento': 1003882}
+
+for k, v in d1.items():
+    print(f"{k} = {v}")
